@@ -15,25 +15,32 @@ class Tutor:
 
     def responder(self, pregunta: str) -> dict:
         """
-        Procesa la pregunta del usuario.
-        Si es sobre vocabulario, consulta el RAG y devuelve la respuesta.
-        Si es relevante para registrar, marca la intención.
+        Procesa la pregunta del usuario, genera una respuesta y extrae
+        el texto específico que se debe guardar en Notion.
         """
-        # Buscar en la base de conocimiento (RAG)
-        resultado_rag = buscar_vocabulario(pregunta)
+        # Palabras clave para detectar la intención de registrar
+        keywords_registrar = ["registra", "guarda", "anota", "apunta"]
+        
+        texto_para_guardar = None
+        
+        # Lógica para detectar si se debe guardar algo
+        if any(keyword in pregunta.lower() for keyword in keywords_registrar):
+            # Creamos un prompt específico para que la IA extraiga la información
+            prompt_extraccion = [
+                SystemMessage(content="Tu tarea es extraer la palabra o frase que el usuario quiere guardar y su significado. Responde únicamente con el texto a guardar en formato 'palabra: significado'."),
+                HumanMessage(content=pregunta)
+            ]
+            respuesta_extraccion = self.llm.invoke(prompt_extraccion).content
+            texto_para_guardar = respuesta_extraccion.strip()
 
-        prompt = [
-            SystemMessage(content="Sos un tutor de idiomas paciente y claro."),
-            HumanMessage(content=f"La consulta del usuario es: {pregunta}"),
-            AIMessage(content=f"Información recuperada: {resultado_rag}"),
+        # Generamos la respuesta conversacional para el usuario
+        prompt_conversacion = [
+            SystemMessage(content="Eres 'Luna', una tutora de idiomas amable y paciente."),
+            HumanMessage(content=pregunta)
         ]
-
-        respuesta = self.llm.invoke(prompt)
-
-        # Decidir si hay que registrar el aprendizaje
-        registrar = any(palabra in pregunta.lower() for palabra in ["nuevo", "aprender", "recordar"])
+        respuesta_conversacional = self.llm.invoke(prompt_conversacion).content
 
         return {
-            "respuesta": respuesta.content,
-            "registrar": registrar
+            "respuesta": respuesta_conversacional,
+            "texto_para_guardar": texto_para_guardar  # Puede ser None si no hay nada que guardar
         }

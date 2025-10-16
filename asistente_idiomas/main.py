@@ -1,9 +1,9 @@
 # asistente_idiomas/main.py
 import os
 from typing import Sequence, Annotated, TypedDict, Literal
-from dotenv import load_dotenv
 
-from langchain_core.messages import BaseMessage, SystemMessage, HumanMessage
+from dotenv import load_dotenv
+from langchain_core.messages import BaseMessage, SystemMessage, HumanMessage, AIMessage
 from langchain_core.tools import tool
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.graph import StateGraph, END
@@ -11,13 +11,14 @@ from langgraph.graph.message import add_messages
 from langgraph.prebuilt import ToolNode
 from langgraph.checkpoint.sqlite import SqliteSaver
 
-# Tus agentes
+# Tus agentes, que ahora usaremos correctamente
 from asistente_idiomas.agentes.tutor import Tutor
 from asistente_idiomas.agentes.registrador import Registrador
 
 # Herramientas
 from asistente_idiomas.tools.rag_idioma import buscar_vocabulario
 from asistente_idiomas.tools.notion_tool import guardar_en_notion
+from asistente_idiomas.tools.rag_idioma import off_topic_tool
 
 # --- 1️⃣ Configuración de entorno ---
 def setup_environment():
@@ -28,21 +29,28 @@ def setup_environment():
     print("✅ Variables de entorno cargadas correctamente.")
 
 
-# --- 2️⃣ Definición de herramientas ---
+# --- 2️⃣ Definición de herramientas (sin cambios) ---
+# (Tu código de herramientas @tool va aquí, lo omito por brevedad pero debe estar)
 @tool
 def herramienta_buscar_vocabulario(palabra: str):
     """Busca definiciones o traducciones de palabras en la base RAG de idiomas."""
     return buscar_vocabulario(palabra)
 
 @tool
-def herramienta_guardar_en_notion(texto: str):
-    """Guarda un resumen o nota en Notion."""
-    return guardar_en_notion(texto)
+def herramienta_guardar_en_notion(texto_a_guardar: str):
+    """
+    Guarda una ÚNICA cadena de texto en la base de datos de Notion.
+    Esta herramienta solo acepta un argumento de tipo string llamado 'texto_a_guardar'.
+    Úsala para registrar la palabra y su significado juntos en una sola frase.
+    Por ejemplo: 'yellow: amarillo'.
+    NO intentes pasar argumentos separados para la palabra y el significado.
+    """
+    return guardar_en_notion(texto_a_guardar)
 
 @tool
 def herramienta_off_topic():
     """Responde cuando el usuario pregunta algo fuera del contexto educativo."""
-    return detectar_off_topic()
+    return off_topic_tool()
 
 def definir_herramientas():
     print("🛠️ Herramientas cargadas: vocabulario, guardar_en_notion, off_topic.")
@@ -53,112 +61,95 @@ def definir_herramientas():
     ]
 
 
-# --- 3️⃣ Estado compartido ---
+# --- 3️⃣ Estado compartido (MODIFICADO) ---
 class AgentState(TypedDict):
     """Estado compartido entre nodos del grafo."""
     messages: Annotated[Sequence[BaseMessage], add_messages]
-    registrar: bool  # indica si se debe registrar
+    # Canal de comunicación para que el Tutor le diga al Registrador QUÉ guardar.
+    texto_para_registrar: str | None
 
 
-# --- 4️⃣ Nodos del grafo ---
-def nodo_tutora(state: AgentState, llm, tutor: Tutor):
+# --- 4️⃣ Nodos del grafo (CORREGIDOS) ---
+def nodo_tutor(state: AgentState, tutor: Tutor):
     """
-    Nodo principal: llama al Tutor y decide si usar herramientas.
-    Devuelve estado con mensajes y registrar.
+    El agente Tutor procesa el último mensaje del usuario, genera una respuesta
+    y decide si algo debe ser registrado, pasándolo a través del estado.
     """
-    system_prompt = """
-    Eres "Luna", tutora de idiomas amable y paciente 🌙.
-    Tu misión es ayudar al usuario a mejorar vocabulario y fluidez en idiomas.
+    last_user_message = state["messages"][-1].content
     
-    Instrucciones:
-    1. Saluda y mantén actitud empática y didáctica.
-    2. Usa herramientas RAG para buscar palabras o frases.
-    3. Usa Notion si el usuario pide guardar algo.
-    4. Si el mensaje no tiene relación con aprendizaje, usa off-topic.
-    5. Responde de manera clara y educativa.
-    """
+    # El tutor procesa la entrada y devuelve la respuesta y el texto a guardar
+    resultado_tutor = tutor.responder(last_user_message)
     
-    mensajes = [SystemMessage(content=system_prompt)] + state["messages"]
-    # Usamos tutor para procesar la última pregunta del usuario
-    if state["messages"]:
-        ultima = state["messages"][-1]
-        if isinstance(ultima, HumanMessage):
-            resultado = tutor.responder(ultima.content)
-            state["registrar"] = resultado.get("registrar", False)
-            # Añadimos respuesta de tutor como HumanMessage para contexto
-            tutor_message = HumanMessage(content=resultado.get("respuesta", ""))
-            state["messages"].append(tutor_message)
-    
-    # Invocamos LLM con el historial completo
-    respuesta = llm.invoke(state["messages"])
-    state["messages"].append(respuesta)
-    
-    return state
+    respuesta_para_usuario = resultado_tutor.get("respuesta", "No pude procesar tu solicitud.")
+    texto_a_guardar = resultado_tutor.get("texto_para_guardar")
 
+    # Devolvemos la respuesta del Tutor como un mensaje de la IA y actualizamos el estado
+    return {
+        "messages": [AIMessage(content=respuesta_para_usuario)],
+        "texto_para_registrar": texto_a_guardar
+    }
 
 def nodo_registrador(state: AgentState, registrador: Registrador):
-    """Registra aprendizajes si corresponde."""
-    if state.get("registrar"):
-        ultima = state["messages"][-1].content if state["messages"] else ""
-        registrador.registrar(f"Nuevo aprendizaje: {ultima}")
-        state["registrar"] = False  # reseteamos
-    return state
+    """
+    El agente Registrador toma el texto del estado y lo guarda en Notion.
+    """
+    texto = state.get("texto_para_registrar")
+    if texto:
+        print(f"✔️  Registrador: Recibí la orden de guardar '{texto}'.")
+        resultado = registrador.registrar(texto)
+        print(f"✔️  Registrador: {resultado}")
+    
+    # Limpiamos el estado para la siguiente ronda
+    return {"texto_para_registrar": None}
+
+def should_register(state: AgentState) -> Literal["registrador", "__end__"]:
+    """Decide si el flujo debe ir al agente Registrador o terminar."""
+    if state.get("texto_para_registrar"):
+        return "registrador"
+    else:
+        return "__end__"
 
 
-def should_continue(state: AgentState) -> Literal["tools", "__end__"]:
-    """Determina si hay que ejecutar herramientas o terminar."""
-    if state["messages"] and state["messages"][-1].tool_calls:
-        return "tools"
-    return "__end__"
-
-
-def construir_grafo(llm_con_herramientas, lista_herramientas, tutor: Tutor, registrador: Registrador):
-    """Construye y compila el grafo integrado del asistente."""
+def construir_grafo(tutor: Tutor, registrador: Registrador):
+    """Construye y compila el grafo con los agentes Tutor y Registrador."""
     graph = StateGraph(AgentState)
 
-    # Nodo principal de tutor
-    graph.add_node("tutora", lambda state: nodo_tutora(state, llm_con_herramientas, tutor))
-    # Nodo de herramientas
-    graph.add_node("tools", ToolNode(lista_herramientas))
-    # Nodo registrador
+    graph.add_node("tutor", lambda state: nodo_tutor(state, tutor))
     graph.add_node("registrador", lambda state: nodo_registrador(state, registrador))
 
-    # Flujo
-    graph.set_entry_point("tutora")
+    graph.set_entry_point("tutor")
     graph.add_conditional_edges(
-        "tutora", should_continue, {"tools": "tools", "__end__": "registrador"}
+        "tutor",
+        should_register,
+        {
+            "registrador": "registrador",
+            "__end__": END,
+        },
     )
-    graph.add_edge("tools", "tutora")
     graph.add_edge("registrador", END)
 
-    print("🧩 Grafo del asistente 'Luna' construido e integrado con Tutor y Registrador.")
+    print("🧩 Grafo construido con agentes 'Tutor' y 'Registrador' en colaboración.")
     return graph
 
 
-# --- 5️⃣ Ejecución principal ---
+# --- 5️⃣ Ejecución principal (CORREGIDA) ---
 def main():
     print("🧩 Iniciando setup...")  
     setup_environment()
 
+    # Dejamos tu modelo original, como pediste
     llm = ChatGoogleGenerativeAI(
-        model="gemini-2.5-flash",
+        model="gemini-2.5-flash", 
         google_api_key=os.getenv("GEMINI_API_KEY"),
         temperature=0.4
     )
 
-    # Inicializamos agentes
     tutor = Tutor(llm)
     registrador = Registrador()
     print("✅ Entorno configurado correctamente.")
 
-    # Herramientas
-    herramientas = definir_herramientas()
-    llm_con_herramientas = llm.bind_tools(herramientas)
+    graph = construir_grafo(tutor, registrador)
 
-    # Grafo integrado
-    graph = construir_grafo(llm_con_herramientas, herramientas, tutor, registrador)
-
-    # Checkpoints SQLite
     with SqliteSaver.from_conn_string("checkpoints.db") as checkpointer:
         app = graph.compile(checkpointer=checkpointer)
 
@@ -171,17 +162,28 @@ def main():
                 print("\n👋 Luna: ¡Hasta luego! Sigue practicando 🌟")
                 break
 
+            # Usamos el historial local que ya tenías
             historial.append(HumanMessage(content=entrada))
-            final_state = app.invoke({"messages": historial}, config={"configurable": {"thread_id": "chat_unico"}})
-            historial = final_state["messages"]
-            print(f"\n🤖 Luna: {historial[-1].content}\n")
-
-    checkpointer.conn.close()
-
+            
+            # El checkpointer maneja la memoria entre ejecuciones
+            config = {"configurable": {"thread_id": "chat_unico"}}
+            
+            # Invocamos el grafo
+            final_state = app.invoke({"messages": historial}, config=config)
+            
+            # Agregamos la respuesta del AI al historial
+            historial.append(final_state["messages"][-1])
+            
+            print(f"\n🤖 Luna: {final_state['messages'][-1].content}\n")
 
 if __name__ == "__main__":
     main()
+
+   
+
 # python -m asistente_idiomas.main
+
+
 
 #para push
 #Ejecutas en la terminal: git add .
