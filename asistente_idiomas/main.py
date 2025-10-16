@@ -182,3 +182,8 @@ def main():
 if __name__ == "__main__":
     main()
 # python -m asistente_idiomas.main
+
+#para push
+#Ejecutas en la terminal: git add .
+#git commit -m "Mensaje descriptivo sobre los nuevos cambios"
+#git push origin main
