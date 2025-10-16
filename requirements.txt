@@ -1,0 +1,21 @@
+# --- Núcleo LangGraph y LangChain ---
+langgraph
+langgraph-sdk
+langgraph-checkpoint-sqlite
+langchain
+langchain-core
+langchain-community
+langchain-chroma
+
+# --- Modelos de Google (LLM y embeddings) ---
+langchain_google_genai
+google-generativeai
+
+# --- Persistencia y observabilidad ---
+langsmith
+notion-client
+
+# --- Dependencias auxiliares ---
+chromadb
+python-dotenv
+typing-extensions

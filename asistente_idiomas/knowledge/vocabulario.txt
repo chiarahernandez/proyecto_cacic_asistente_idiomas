@@ -1,0 +1,163 @@
+Personas y familia:
+
+Family	 →    Familia
+Mother	 →    Madre
+Father	 →    Padre
+Brother	 →    Hermano
+Sister	 →    Hermana
+Son	 →    Hijo
+Daughter →    Hija
+Friend	 →    Amigo/a
+Baby	 →    Bebé
+Man	 →    Hombre
+Woman	 →    Mujer
+Child	 →    Niño/a
+People	 →    Personas
+
+
+Casa y hogar:
+House	   →   Casa
+Room	   →   Habitación
+Kitchen	   →   Cocina
+Bathroom   →   Baño
+Bedroom	   →   Dormitorio
+Door	   →    Puerta
+Window 	   →    Ventana
+Table	   →    Mesa
+Chair	   →    Silla
+Bed	   →    Cama
+Lamp	   →    Lámpara
+Floor	   →    Piso
+
+
+
+Escuela:
+
+School	   →      Escuela
+Teacher	   →      Maestro/a
+Student	   →      Estudiante
+Book	   →      Libro
+Notebook   → 	  Cuaderno
+Pen	   →      Bolígrafo
+Pencil	   →      Lápiz
+Eraser	   →      Goma
+Desk	   →      Escritorio
+Lesson	   →      Lección
+Class	   →      Clase
+
+
+
+Días, meses y tiempo:
+
+Monday	   →     Lunes
+Tuesday	   →     Martes
+Wednesday  →     Miércoles
+Thursday   →     Jueves
+Friday	   →     Viernes
+Saturday   →     Sábado
+Sunday	   →     Domingo
+Morning	   →     Mañana
+Afternoon  →     Tarde
+Night	   →     Noche
+Day	   →     Día
+Week	   →     Semana
+Month	   →     Mes
+Year	   →     Año
+
+
+
+Comida:
+
+Food	  →       Comida
+Water	  →     Agua
+Bread	  →     Pan
+Milk	  →     Leche
+Fruit	  →     Fruta
+Apple	  →     Manzana
+Banana	  →     Banana
+Rice	  →     Arroz
+Meat	  →     Carne
+Fish	  →     Pescado
+Egg	  →     Huevo
+Cheese	  →     Queso
+
+
+Lugares:
+
+City	 →      Ciudad
+Town	 →      Pueblo
+Park	 →      Parque
+School	 →      Escuela
+Hospital →      Hospital
+Store	 →      Tienda
+Supermarket →   Supermercado
+Bank	 →      Banco
+Restaurant  →   Restaurante
+Street	  →     Calle
+
+
+
+Verbos comunes:
+
+Be     → 	      Ser / Estar
+Have	 →      Tener
+Do	 →      Hacer
+Go	 →      Ir
+Come	 →      Venir
+See	 →      Ver
+Like	 →      Gustar
+Eat	 →      Comer
+Drink	 →      Beber
+Sleep	 →      Dormir
+Read	 →      Leer
+Write	 →      Escribir
+Speak	 →      Hablar
+Work	 →     Trabajar
+Study	 →      Estudiar
+
+
+Emociones y adjetivos
+
+Happy	 →     Feliz
+Sad	   →   Triste
+Angry	 →     Enojado
+Tired	 →     Cansado
+Hungry	  →    Hambriento
+Beautiful   →  Hermoso
+Good	→      Bueno
+Bad	  →    Malo
+Big	  →    Grande
+Small	  →    Pequeño
+Hot	  →    Caliente
+
+
+Ropa
+
+Clothes	  →    Ropa
+Shirt	 →     Camisa
+Pants	  →    Pantalones
+Dress	 →     Vestido
+Shoes	  →    Zapatos
+Jacket	  →    Chaqueta
+Hat	   →   Sombrero
+Skirt	  →    Falda
+T-shirt	  →    Remera
+Socks	 →     Medias
+
+
+Palabras básicas y útiles
+
+Yes	  →    Sí
+No	 →     No
+Please	  →    Por favor
+Thank you   →  Gracias
+You're welcome	 →   De nada
+Hello	 →     Hola
+Goodbye	  →    Adiós
+Excuse me	→    Perdón / Disculpe
+What?	 →     ¿Qué?
+Where?	    →  ¿Dónde?
+When?	   →   ¿Cuándo?
+How?	  →    ¿Cómo?
+Why?	 →     ¿Por qué?
+Cold    →	Frío
