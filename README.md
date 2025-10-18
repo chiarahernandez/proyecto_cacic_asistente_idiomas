@@ -116,6 +116,8 @@ LANGCHAIN_TRACING_V2=true
 LANGCHAIN_API_KEY=tu_clave_langsmith_aquí
 LANGCHAIN_PROJECT="Luna-Asistente-Idiomas"
 
+
+
 ## Ejecución
 
 Ejecutar el asistente desde la raíz del proyecto:
