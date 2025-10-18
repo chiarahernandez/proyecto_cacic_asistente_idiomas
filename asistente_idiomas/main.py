@@ -93,13 +93,13 @@ def nodo_registrador(state: AgentState, registrador: Registrador):
     """
     El agente Registrador toma el texto del estado y lo guarda en Notion.
     """
-    texto = state.get("texto_para_registrar")
-    if texto:
-        print(f"✔️  Registrador: Recibí la orden de guardar '{texto}'.")
-        resultado = registrador.registrar(texto)
-        print(f"✔️  Registrador: {resultado}")
+    datos = state.get("texto_para_registrar")
+    if datos:
+        print(f"✔️ Registrador: Recibí datos para guardar: {datos}")
+        resultado = registrador.registrar(datos)
+        print(f"✔️ Registrador: {resultado}")
     
-    # Limpiamos el estado para la siguiente ronda
+    # Limpiamos el estado
     return {"texto_para_registrar": None}
 
 def should_register(state: AgentState) -> Literal["registrador", "__end__"]:
