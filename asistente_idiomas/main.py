@@ -179,13 +179,11 @@ def main():
 if __name__ == "__main__":
     main()
 
-   
-
 # python -m asistente_idiomas.main
 
-
-
 #para push
+# git remote add origin https://github.com/chiarahernandez/proyecto_cacic_asistente_idiomas
+
 #Ejecutas en la terminal: git add .
 #git commit -m "Mensaje descriptivo sobre los nuevos cambios"
 #git push origin main
