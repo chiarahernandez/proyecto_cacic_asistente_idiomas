@@ -1,163 +1,255 @@
-Personas y familia:
+# ENGLISH VOCABULARY GUIDE (A1–B1 LEVEL)
 
-Family	 →    Familia
-Mother	 →    Madre
-Father	 →    Padre
-Brother	 →    Hermano
-Sister	 →    Hermana
-Son	 →    Hijo
-Daughter →    Hija
-Friend	 →    Amigo/a
-Baby	 →    Bebé
-Man	 →    Hombre
-Woman	 →    Mujer
-Child	 →    Niño/a
-People	 →    Personas
+---
 
+## 1. Greetings and Introductions
+- Hello / Hi → Hola
+- Good morning / Good afternoon / Good evening → Buenos días / Buenas tardes / Buenas noches
+- Goodbye / Bye / See you later → Adiós / Nos vemos
+- How are you? → ¿Cómo estás?
+- I’m fine, thank you. And you? → Estoy bien, gracias. ¿Y tú?
+- Nice to meet you → Encantado/a de conocerte
+- What’s your name? → ¿Cómo te llamas?
+- My name is Anna. → Me llamo Anna.
 
-Casa y hogar:
-House	   →   Casa
-Room	   →   Habitación
-Kitchen	   →   Cocina
-Bathroom   →   Baño
-Bedroom	   →   Dormitorio
-Door	   →    Puerta
-Window 	   →    Ventana
-Table	   →    Mesa
-Chair	   →    Silla
-Bed	   →    Cama
-Lamp	   →    Lámpara
-Floor	   →    Piso
+**Useful expressions:**
+- How’s it going? → ¿Cómo va todo?
+- Long time no see! → ¡Cuánto tiempo sin verte!
 
+---
 
+## 2. Personal Information
+- age → edad  
+- address → dirección  
+- phone number → número de teléfono  
+- nationality → nacionalidad  
+- occupation → ocupación / trabajo  
 
-Escuela:
+**Examples:**
+- I’m from Argentina.  
+- I’m twenty years old.  
+- I’m a student.  
+- My address is 23 Main Street.
 
-School	   →      Escuela
-Teacher	   →      Maestro/a
-Student	   →      Estudiante
-Book	   →      Libro
-Notebook   → 	  Cuaderno
-Pen	   →      Bolígrafo
-Pencil	   →      Lápiz
-Eraser	   →      Goma
-Desk	   →      Escritorio
-Lesson	   →      Lección
-Class	   →      Clase
+---
 
+## 3. Family and Relationships
+- mother / mom → madre / mamá  
+- father / dad → padre / papá  
+- sister / brother → hermana / hermano  
+- son / daughter → hijo / hija  
+- husband / wife → esposo / esposa  
+- grandfather / grandmother → abuelo / abuela  
+- uncle / aunt → tío / tía  
+- cousin → primo / prima  
+- friend → amigo/a  
+- boyfriend / girlfriend → novio / novia
 
+**Examples:**
+- My mother is a teacher.  
+- I have two brothers and one sister.  
 
-Días, meses y tiempo:
+---
 
-Monday	   →     Lunes
-Tuesday	   →     Martes
-Wednesday  →     Miércoles
-Thursday   →     Jueves
-Friday	   →     Viernes
-Saturday   →     Sábado
-Sunday	   →     Domingo
-Morning	   →     Mañana
-Afternoon  →     Tarde
-Night	   →     Noche
-Day	   →     Día
-Week	   →     Semana
-Month	   →     Mes
-Year	   →     Año
+## 4. Daily Routines
+- wake up → despertarse  
+- get up → levantarse  
+- take a shower → ducharse  
+- have breakfast → desayunar  
+- go to work / go to school → ir al trabajo / ir a la escuela  
+- have lunch / have dinner → almorzar / cenar  
+- do homework → hacer la tarea  
+- go to bed → acostarse
 
+**Examples:**
+- I wake up at 7 a.m. and go to work at 8.  
+- She has dinner with her family every night.
 
+---
 
-Comida:
+## 5. Days, Months, and Seasons
+**Days:** Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday  
+**Months:** January, February, March, April, May, June, July, August, September, October, November, December  
+**Seasons:** spring (primavera), summer (verano), autumn/fall (otoño), winter (invierno)
 
-Food	  →       Comida
-Water	  →     Agua
-Bread	  →     Pan
-Milk	  →     Leche
-Fruit	  →     Fruta
-Apple	  →     Manzana
-Banana	  →     Banana
-Rice	  →     Arroz
-Meat	  →     Carne
-Fish	  →     Pescado
-Egg	  →     Huevo
-Cheese	  →     Queso
+**Example:**  
+- My birthday is in July.  
+- It’s very cold in winter.
 
+---
 
-Lugares:
+## 6. Numbers and Time
+**Cardinal numbers:** one, two, three, four, five…  
+**Ordinal numbers:** first, second, third, fourth, fifth…  
+**Telling the time:**
+- What time is it? → ¿Qué hora es?
+- It’s five o’clock. → Son las cinco.
+- It’s half past two. → Son las dos y media.
+- It’s a quarter to six. → Son las seis menos cuarto.
 
-City	 →      Ciudad
-Town	 →      Pueblo
-Park	 →      Parque
-School	 →      Escuela
-Hospital →      Hospital
-Store	 →      Tienda
-Supermarket →   Supermercado
-Bank	 →      Banco
-Restaurant  →   Restaurante
-Street	  →     Calle
+---
 
+## 7. Food and Drinks
+**Food:** bread, rice, meat, fish, eggs, fruit, vegetables, cheese, soup, salad  
+**Drinks:** water, coffee, tea, juice, milk, soda, wine  
+**Meals:** breakfast, lunch, dinner, snack  
 
+**Useful expressions:**
+- I’m hungry. → Tengo hambre.  
+- I’m thirsty. → Tengo sed.  
+- Can I have some water, please? → ¿Puedo tener un poco de agua, por favor?  
 
-Verbos comunes:
+---
 
-Be     → 	      Ser / Estar
-Have	 →      Tener
-Do	 →      Hacer
-Go	 →      Ir
-Come	 →      Venir
-See	 →      Ver
-Like	 →      Gustar
-Eat	 →      Comer
-Drink	 →      Beber
-Sleep	 →      Dormir
-Read	 →      Leer
-Write	 →      Escribir
-Speak	 →      Hablar
-Work	 →     Trabajar
-Study	 →      Estudiar
+## 8. Clothes
+- shirt, T-shirt, sweater, jacket, coat, pants/trousers, jeans, dress, skirt, shoes, boots, socks, hat, scarf, gloves  
+**Colors:** red, blue, green, yellow, black, white, brown, grey, pink, orange, purple  
 
+**Examples:**
+- She’s wearing a red dress.  
+- I like your blue jacket.  
 
-Emociones y adjetivos
+---
 
-Happy	 →     Feliz
-Sad	   →   Triste
-Angry	 →     Enojado
-Tired	 →     Cansado
-Hungry	  →    Hambriento
-Beautiful   →  Hermoso
-Good	→      Bueno
-Bad	  →    Malo
-Big	  →    Grande
-Small	  →    Pequeño
-Hot	  →    Caliente
+## 9. The House
+**Rooms:** kitchen, bathroom, bedroom, living room, dining room, garden  
+**Furniture:** bed, table, chair, sofa, lamp, fridge, oven, mirror, window, door  
 
+**Examples:**
+- There’s a big sofa in the living room.  
+- I sleep in my bedroom upstairs.  
 
-Ropa
+---
 
-Clothes	  →    Ropa
-Shirt	 →     Camisa
-Pants	  →    Pantalones
-Dress	 →     Vestido
-Shoes	  →    Zapatos
-Jacket	  →    Chaqueta
-Hat	   →   Sombrero
-Skirt	  →    Falda
-T-shirt	  →    Remera
-Socks	 →     Medias
+## 10. The City and Transportation
+Places: park, school, bank, supermarket, hospital, restaurant, library, post office, cinema, bus station  
+Transportation: car, bus, train, plane, bicycle, taxi, subway/underground  
 
+**Examples:**
+- I go to work by bus.  
+- The bank is next to the post office.  
 
-Palabras básicas y útiles
+---
 
-Yes	  →    Sí
-No	 →     No
-Please	  →    Por favor
-Thank you   →  Gracias
-You're welcome	 →   De nada
-Hello	 →     Hola
-Goodbye	  →    Adiós
-Excuse me	→    Perdón / Disculpe
-What?	 →     ¿Qué?
-Where?	    →  ¿Dónde?
-When?	   →   ¿Cuándo?
-How?	  →    ¿Cómo?
-Why?	 →     ¿Por qué?
-Cold    →	Frío
+## 11. Weather
+- sunny → soleado  
+- cloudy → nublado  
+- rainy → lluvioso  
+- windy → ventoso  
+- snowy → nevado  
+- hot / cold / warm / cool → caliente / frío / templado / fresco  
+
+**Examples:**
+- It’s raining today.  
+- It’s very hot in summer.  
+
+---
+
+## 12. Emotions and Personality
+Emotions:happy, sad, angry, tired, bored, excited, scared, nervous, surprised  
+Personality: kind, friendly, lazy, shy, funny, polite, serious, clever, hard-working  
+
+**Examples:**
+- I’m tired but happy.  
+- She’s very friendly and kind.  
+
+---
+
+## 13. Health and the Body
+Parts of the body: head, face, eyes, nose, mouth, ears, arms, hands, legs, feet, stomach, back  
+Common illnesses: cold, flu, headache, stomachache, fever, sore throat, cough  
+
+**Examples:**
+- I have a headache.  
+- He has a sore throat.  
+- Take some medicine and rest.  
+
+---
+
+## 14. Hobbies and Free Time
+- read books, watch movies, listen to music, play sports, go swimming, travel, cook, dance, draw, play the guitar, go for a walk  
+
+**Examples:**
+- I like listening to music in my free time.  
+- She plays tennis every weekend.  
+
+---
+
+## 15. Jobs and Professions
+teacher, doctor, nurse, student, engineer, driver, waiter, chef, police officer, firefighter, musician, farmer, journalist  
+
+**Examples:**
+- My father is a doctor.  
+- She wants to be an engineer.  
+
+---
+
+## 16. Nature and Animals
+Nature: mountain, river, sea, lake, forest, beach, tree, flower, sky, sun, moon  
+Animals: dog, cat, bird, fish, horse, cow, sheep, pig, elephant, tiger, lion, rabbit  
+
+**Examples:**
+- The sun is shining in the sky.  
+- I love dogs; they’re very friendly.  
+
+---
+
+## 17. Technology and Communication
+Devices: phone, computer, laptop, tablet, TV, camera  
+Verbs: call, text, email, type, click, send, download, upload  
+
+**Examples:**
+- I’m using my laptop to study.  
+- She sent me a message.  
+
+---
+
+## 18. Shopping
+**Vocabulary:** store/shop, mall, cashier, customer, price, sale, discount, money, cash, credit card, bag, clothes, shoes  
+
+**Verbs:** buy, sell, pay, try on, choose, spend  
+
+**Examples:**
+- How much does it cost?  
+- I want to buy a new pair of shoes.  
+- She paid with her credit card.  
+
+---
+
+## 19. Travel and Holidays
+**Vocabulary:** airport, hotel, ticket, passport, suitcase, flight, reservation, beach, map, guide  
+**Verbs:** travel, book, visit, arrive, leave, pack  
+
+**Examples:**
+- I’m going to travel to Italy next month.  
+- Don’t forget your passport!  
+
+---
+
+## 20. Common Phrasal Verbs (B1)
+- get up → levantarse  
+- look for → buscar  
+- turn on / turn off → encender / apagar  
+- wake up → despertarse  
+- give up → rendirse / dejar de hacer algo  
+- take off → despegar (avión) / sacarse (ropa)  
+- put on → ponerse (ropa)  
+- look after → cuidar  
+
+**Examples:**
+- She wakes up early every day.  
+- Don’t give up! You can do it!  
+
+---
+
+## 21. Common Expressions and Idioms
+- What’s up? → ¿Qué tal?  
+- It’s up to you. → Tú decides.  
+- I don’t mind. → No me importa.  
+- Take your time. → Tómate tu tiempo.  
+- Break a leg! → ¡Mucha suerte!  
+- Piece of cake → Muy fácil.  
+
+**Examples:**
+- Learning English is a piece of cake for her.  
+- “Do you want tea or coffee?” – “I don’t mind.”  

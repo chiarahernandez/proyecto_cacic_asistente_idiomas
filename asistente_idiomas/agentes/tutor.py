@@ -4,7 +4,7 @@ import re
 from datetime import datetime
 from langchain.schema import SystemMessage, HumanMessage, AIMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
-
+from asistente_idiomas.tools.rag_idioma import buscar_vocabulario
 
 class Tutor:
     """
@@ -51,8 +51,37 @@ class Tutor:
         self.historial_mensajes.append(HumanMessage(content=pregunta))
 
         # Detectamos la última palabra consultada (por ejemplo: “qué significa moon”)
+        # --- 2.5️⃣ Si el usuario pregunta "qué significa X", consultamos el RAG ---
+        # --- 2.5️⃣ Si el usuario pregunta "qué significa X", consultamos el RAG ---
         if pregunta.lower().startswith("qué significa"):
             self.ultima_palabra = pregunta.split()[-1].strip(" ?")
+
+            print(f"🔍 Buscando en RAG: {self.ultima_palabra}")
+            try:
+                resultados_rag = buscar_vocabulario(self.ultima_palabra)
+                if resultados_rag:
+                    # Tomamos solo el fragmento más relevante
+                    fragmento = resultados_rag[0][:400]
+
+                    # 💡 Le damos ese contexto al modelo para que lo use en su respuesta
+                    contexto = (
+                        f"Usa la siguiente información para responder de forma didáctica:\n{fragmento}\n\n"
+                        f"Pregunta del usuario: {pregunta}"
+                    )
+
+                    prompt_con_rag = self.historial_mensajes + [HumanMessage(content=contexto)]
+                    resultado_con_rag = self.llm.invoke(prompt_con_rag)
+                    respuesta_texto = resultado_con_rag.content.strip()
+
+                    # Guardamos y devolvemos la respuesta
+                    self.historial_mensajes.append(AIMessage(content=respuesta_texto))
+                    return {"respuesta": respuesta_texto, "texto_para_guardar": None}
+
+                else:
+                    print("⚠️ RAG no encontró coincidencias, respondiendo con LLM.")
+            except Exception as e:
+                print(f"⚠️ Error al usar RAG: {e}")
+
 
         # --- 3️⃣ Si el usuario pide registrar algo ---
         if any(keyword in pregunta.lower() for keyword in keywords_registrar):

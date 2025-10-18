@@ -1,0 +1,281 @@
+# ENGLISH GRAMMAR GUIDE (A1–B1 LEVEL)
+
+---
+
+## 1. Parts of Speech
+English words are divided into categories called parts of speech: (Las palabras en inglés se dividen en categorías llamadas “partes del discurso”)
+- **Nouns** → people, places, things, or ideas (e.g., dog, city, happiness)(Sustantivos → personas, lugares, cosas o ideas, ej.: perro, ciudad, felicidad)
+- **Verbs** → actions or states (e.g., run, be, have) (Verbos → acciones o estados, ej.: correr, ser/estar, tener)
+- **Adjectives** → describe nouns (e.g., big, beautiful, cold) (Adjetivos → describen sustantivos, ej.: grande, hermoso, frío)
+- **Adverbs** → describe verbs, adjectives, or other adverbs (e.g., quickly, very) (Adverbios → describen verbos, adjetivos u otros adverbios, ej.: rápidamente, muy)
+- **Pronouns** → replace nouns (e.g., he, she, it, they) (Pronombres → reemplazan sustantivos, ej.: él, ella, eso, ellos)
+- **Prepositions** → show relation (e.g., in, on, at, under) (Preposiciones → muestran relación, ej.: en, sobre, a, debajo)
+- **Conjunctions** → connect words or sentences (e.g., and, but, because) (Conjunciones → conectan palabras u oraciones, ej.: y, pero, porque)
+- **Articles** → a, an, the (Artículos → a, an, the, un/una, el/la)
+
+---
+
+## 2. Nouns and Articles
+### Countable nouns
+Can be counted: “one apple”, “two apples”. (Se pueden contar: “una manzana”, “dos manzanas”)
+Use “a” or “an” for singular: (Usa “a” o “an” en singular)
+- “a” before consonant sounds: a dog, a car. (“a” antes de sonidos consonánticos: un perro, un auto)
+- “an” before vowel sounds: an apple, an hour. (“an” antes de sonidos vocálicos: una manzana, una hora)
+
+### Uncountable nouns
+Cannot be counted: water, information, music. (No se pueden contar: agua, información, música)
+No plural form. Use “some”, “much”, “a lot of”: (No tienen plural. Usa “some”, “much”, “a lot of”)
+- I need some water. / I don’t have much money. (Necesito algo de agua. / No tengo mucho dinero)
+
+### The definite article “the”
+Used when something is specific or known:(Se usa cuando algo es específico o conocido)
+- The sun is hot. / The book on the table is mine. (El sol está caliente. / El libro sobre la mesa es mío)
+
+---
+
+## 3. Pronouns
+### Subject pronouns
+I, you, he, she, it, we, they
+
+### Object pronouns
+me, you, him, her, it, us, them
+
+### Possessive adjectives
+my, your, his, her, its, our, their
+
+### Possessive pronouns
+mine, yours, his, hers, ours, theirs
+
+**Example:**
+- This is my book. → It’s mine.
+- I saw her yesterday. → She called me later.
+
+---
+
+## 4. Present Simple
+Used for habits, routines, general facts, and permanent situations. (Se usa para hábitos, rutinas, hechos generales y situaciones permanentes)
+
+**Form:**
+- Affirmative: Subject + base verb (+ s/es for he/she/it)
+- Negative: Subject + do/does + not + base verb
+- Question: Do/Does + subject + base verb?
+
+**Examples:**
+- I work every day. (Trabajo todos los días)
+- She plays tennis on Sundays.(Ella juega al tenis los domingos)
+- He doesn’t like coffee. (A él no le gusta el café)
+- Do they live in London? (¿Viven ellos en Londres?)
+
+**Adverbs of frequency:** always, usually, often, sometimes, never.
+→ They go to school every day. / She never eats meat.
+
+---
+
+## 5. Present Continuous
+Used for actions happening *now* or temporary situations. (Se usa para acciones que ocurren ahora o situaciones temporales)
+
+**Form:** am/is/are + verb-ing  
+**Examples:**
+- I am studying English. (Estoy estudiando inglés)
+- She is watching TV right now. (Ella está viendo televisión ahora mismo)
+- They are living in Paris for a few months. (Están viviendo en París por unos meses)
+
+**Difference from Present Simple:**
+- Present Simple → routine: I work on Mondays. (Rutina: Trabajo los lunes)
+- Present Continuous → current action: I am working now.(Acción actual: Estoy trabajando ahora)
+
+---
+
+## 6. Past Simple 
+Used for finished actions in the past. (Se usa para acciones terminadas en el pasado)
+
+**Form:**
+- Regular verbs: verb + -ed → worked, played, visited.
+- Irregular verbs: special forms → go → went, have → had.
+
+**Examples:**
+- I visited Rome last summer.(Visité Roma el verano pasado)
+- She didn’t watch the movie. (Ella no vio la película)
+- Did you see him yesterday? (¿Lo viste ayer?)
+
+**Time expressions:** yesterday, last week, in 2010, ago.
+
+---
+
+## 7. Past Continuous
+Used for actions in progress at a specific time in the past. (Se usa para acciones en progreso en un momento específico del pasado)
+
+**Form:** was/were + verb-ing  
+**Examples:**
+- I was reading when you called. (Estaba leyendo cuando llamaste)
+- They were playing football at 5 pm. (Jugaban al fútbol a las 5 p.m.)
+- She wasn’t listening to the teacher. (Ella no estaba escuchando al profesor)
+
+**Used with Past Simple:**
+- I was cooking when the phone rang. (Estaba cocinando cuando sonó el teléfono)
+
+---
+
+## 8. Present Perfect
+Used for actions that happened at an unspecified time or that have relevance now. (Se usa para acciones que ocurrieron en un tiempo no especificado o que son relevantes ahora)
+
+**Form:** have/has + past participle  
+**Examples:**
+- I have visited Paris. (He visitado París)
+- She has already finished her homework. (Ella ya terminó su tarea)
+- Have you ever tried sushi? (¿Alguna vez has probado sushi?)
+
+**Keywords:** ever, never, already, just, yet, since, for.
+
+**Difference:**
+- Past Simple → finished time: I went to Spain last year. (Pasado simple → tiempo terminado: Fui a España el año pasado)
+- Present Perfect → still relevant: I’ve been to Spain. (no specific time) (Presente perfecto → todavía relevante: He estado en España. No se indica el tiempo específico)
+
+---
+
+## 9. Future Forms
+### a) Will
+Used for decisions made at the moment, promises, or predictions. (Se usa para decisiones del momento, promesas o predicciones)
+- I’ll call you later. (Te llamaré más tarde)
+- It will rain tomorrow. (Lloverá mañana)
+
+### b) Going to
+Used for plans or intentions. (Se usa para planes o intenciones)
+- I’m going to study medicine. (Voy a estudiar medicina)
+- They’re going to visit us next week. (Nos van a visitar la próxima semana)
+
+### c) Present Continuous (for future arrangements) (Se usa para planes futuros organizados)
+- I’m meeting my friends tonight. (Me voy a reunir con mis amigos esta noche)
+- She’s flying to Madrid tomorrow. (Ella volará a Madrid mañana)
+
+---
+
+## 10. Modal Verbs
+### Can / Could
+- Ability: I can swim.
+- Permission: Can I open the window?
+- Request: Could you help me?
+
+### Must / Have to
+- Obligation: I must study. / I have to work early.
+- Prohibition: You mustn’t smoke here.
+
+### Should
+- Advice: You should eat more vegetables.
+
+### May / Might
+- Possibility: It might rain later.
+
+---
+
+## 11. Comparatives and Superlatives
+### Comparative: adjective + -er / more + adjective
+- taller, smaller, more beautiful
+- Tom is taller than Max.
+
+### Superlative: the + adjective + -est / most + adjective
+- the tallest, the most expensive
+- This is the best restaurant in town.
+
+**Irregular adjectives:** good → better → best; bad → worse → worst.
+
+---
+
+## 12. Adverbs of Frequency and Time
+Used with the Present Simple:
+- always, usually, often, sometimes, rarely, never.
+
+Used with time expressions:
+- now, today, this week, last year, tomorrow.
+
+**Examples:**
+- She often goes running.
+- They are studying now.
+- I visited them last summer.
+
+---
+
+## 13. Prepositions of Time and Place
+**Time:**
+- at (specific time): at 6 o’clock, at night.
+- on (days/dates): on Monday, on June 3rd.
+- in (months/years/periods): in July, in 2020, in the morning.
+
+**Place:**
+- in (inside): in the room, in London.
+- on (surface): on the table, on the bus.
+- at (point): at the station, at school.
+
+---
+
+## 14. Questions and Answers
+### Yes/No questions:
+Do you like pizza? → Yes, I do. / No, I don’t.
+Is he at home? → Yes, he is. / No, he isn’t.
+
+### Wh- questions:
+Who, What, When, Where, Why, How
+- What are you doing?
+- Where do you live?
+- How are you?
+
+---
+
+## 15. There is / There are
+Used to say that something exists.
+
+**Form:**
+- There is (singular): There is a cat on the chair.
+- There are (plural): There are two dogs in the park.
+
+**Negative:** There isn’t / There aren’t.  
+**Questions:** Is there...? / Are there...?
+
+---
+
+## 16. Quantifiers
+- **some / any** → I have some apples. / Do you have any milk?
+- **much / many** → How much water? / How many books?
+- **a lot of / lots of** → I have a lot of friends.
+- **few / little** → few apples (countable), little water (uncountable).
+
+---
+
+## 17. Gerunds and Infinitives
+**Gerund (verb + ing)** after certain verbs: enjoy, like, love, hate, finish.
+→ I enjoy reading. / She hates waiting.
+
+**Infinitive (to + base verb)** after some verbs: want, need, decide, plan.
+→ I want to go. / They decided to study abroad.
+
+---
+
+## 18. Conditional Sentences
+### Type 0: general truth
+If + Present Simple → Present Simple
+→ If you heat water, it boils.
+
+### Type 1: real future possibility
+If + Present Simple → will + verb
+→ If it rains, we’ll stay home.
+
+### Type 2: unreal present
+If + Past Simple → would + verb
+→ If I were rich, I would travel the world.
+
+---
+
+## 19. Passive Voice (intro)
+Used when the focus is on the action, not the doer.
+
+**Form:** be + past participle
+→ The cake was made by my mom.
+→ English is spoken all over the world.
+
+---
+
+## 20. Common Mistakes (A1–B1)
+-  “He don’t like” → “He doesn’t like”
+-  “I am agree” → “I agree”
+-  “She can to swim” →  “She can swim”
+-  “I have 20 years” →  “I am 20 years old”

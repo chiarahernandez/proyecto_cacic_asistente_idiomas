@@ -20,6 +20,8 @@ from asistente_idiomas.tools.rag_idioma import buscar_vocabulario
 from asistente_idiomas.tools.notion_tool import guardar_en_notion
 from asistente_idiomas.tools.rag_idioma import off_topic_tool
 
+from asistente_idiomas.tools.rag_idioma import inicializar_rag  
+
 # --- 1️⃣ Configuración de entorno ---
 def setup_environment():
     """Carga variables desde el archivo .env y valida la API key."""
@@ -137,19 +139,27 @@ def main():
     print("🧩 Iniciando setup...")  
     setup_environment()
 
-    # Dejamos tu modelo original, como pediste
+    # 👇 1️⃣ Inicializamos el RAG ANTES de crear los agentes
+    print("🧠 Inicializando RAG de idioma...")
+    inicializar_rag()  # esto cargará vocabulario.txt, frases.txt y gramatica.txt
+    print("✅ RAG inicializado correctamente.\n")
+
+    # 👇 2️⃣ Configuramos el modelo LLM
     llm = ChatGoogleGenerativeAI(
         model="gemini-2.5-flash", 
         google_api_key=os.getenv("GEMINI_API_KEY"),
         temperature=0.4
     )
 
+    # 👇 3️⃣ Inicializamos los agentes
     tutor = Tutor(llm)
     registrador = Registrador()
     print("✅ Entorno configurado correctamente.")
 
+    # 👇 4️⃣ Construimos el grafo
     graph = construir_grafo(tutor, registrador)
 
+    # 👇 5️⃣ Configuramos la memoria (checkpoints)
     with SqliteSaver.from_conn_string("checkpoints.db") as checkpointer:
         app = graph.compile(checkpointer=checkpointer)
 
@@ -162,16 +172,10 @@ def main():
                 print("\n👋 Luna: ¡Hasta luego! Sigue practicando 🌟")
                 break
 
-            # Usamos el historial local que ya tenías
             historial.append(HumanMessage(content=entrada))
             
-            # El checkpointer maneja la memoria entre ejecuciones
             config = {"configurable": {"thread_id": "chat_unico"}}
-            
-            # Invocamos el grafo
             final_state = app.invoke({"messages": historial}, config=config)
-            
-            # Agregamos la respuesta del AI al historial
             historial.append(final_state["messages"][-1])
             
             print(f"\n🤖 Luna: {final_state['messages'][-1].content}\n")
