@@ -1,5 +1,3 @@
-# asistente_idiomas/agentes/tutor.py
-
 import os
 import json
 import re
@@ -19,6 +17,7 @@ class Tutor:
         self.llm = llm
         self.saludado = False
         self.historial_mensajes = []
+        self.ultima_palabra = None  # 🧩 para evitar errores entre modos
 
         self.system_prompt = SystemMessage(
             content=(
@@ -29,12 +28,24 @@ class Tutor:
         )
         self.historial_mensajes.append(self.system_prompt)
 
+    # 🧠 Función auxiliar para extraer la palabra consultada
+    def _extraer_palabra(self, texto: str) -> str:
+        """
+        Extrae la palabra clave de una pregunta del tipo:
+        'qué significa la palabra zorplin' -> 'zorplin'
+        """
+        texto = texto.lower().strip()
+        texto = re.sub(
+            r"(qué\s+significa|qué\s+quiere\s+decir|definición\s+de|significado\s+de|qué\s+es|explica\s+la\s+palabra|explícame\s+la\s+palabra|dime\s+qué\s+significa)",
+            "",
+            texto,
+        )
+        texto = re.sub(r"\b(la|el|una|un|palabra|de|del|es)\b", "", texto)
+        match = re.findall(r"[a-záéíóúüñ'-]+", texto)
+        return match[-1] if match else texto
+
     # 👇 FUNCIÓN PRINCIPAL
     def responder(self, pregunta: str) -> dict:
-        """
-        Procesa la pregunta del usuario, genera una respuesta y extrae el texto
-        específico que se debe guardar en Notion.
-        """
         keywords_registrar = ["registra", "guarda", "anota", "apunta"]
         texto_para_guardar = None
         respuesta_final = ""
@@ -55,40 +66,38 @@ class Tutor:
         # --- 2️⃣ Guardamos el mensaje ---
         self.historial_mensajes.append(HumanMessage(content=pregunta))
 
-        # --- 2.5️⃣ Detección flexible de consultas tipo "qué significa", etc. ---
+        # --- 2.5️⃣ Detección de consultas tipo "qué significa..." ---
         patrones_significado = [
-            r"qué\s+significa",
-            r"definición\s+de",
+            r"qu[eé]\s+significa",
+            r"definici[oó]n\s+de",
             r"significado\s+de",
-            r"qué\s+quiere\s+decir",
-            r"qué\s+es\s+",
+            r"qu[eé]\s+quiere\s+decir",
+            r"qu[eé]\s+es\s+",
             r"explica\s+la\s+palabra",
-            r"explícame\s+la\s+palabra",
-            r"dime\s+qué\s+significa",
+            r"expl[ií]came\s+la\s+palabra",
+            r"dime\s+qu[eé]\s+significa",
         ]
 
         if any(re.search(p, pregunta.lower()) for p in patrones_significado):
-            # Extraemos una posible palabra clave
-            match_palabra = re.search(r"(significa|de|es)\s+([a-zA-Záéíóúüñ'-]+)", pregunta.lower())
-            if match_palabra:
-                palabra_consulta = match_palabra.group(2).strip(" ?")
-            else:
-                palabra_consulta = pregunta.split()[-1].strip(" ?")
+            palabra_consulta = self._extraer_palabra(pregunta)
+            self.ultima_palabra = palabra_consulta
 
             print(f"🔍 Buscando en RAG: {palabra_consulta}")
-
-            # ✅ 1️⃣ Buscar en el RAG
             resultados_rag = buscar_vocabulario(palabra_consulta)
 
-            # Si no encuentra nada, avisar
             if not resultados_rag:
-                respuesta_final = (
-                    f"No encontré información sobre '{palabra_consulta}' en mi base de conocimiento. "
-                    "Podría ser una palabra inventada o un término fuera de mi base."
+                print(f"⚠️ '{palabra_consulta}' no encontrada en el RAG. Consultando directamente al modelo Gemini...")
+                prompt_fallback = (
+                    f"Define y traduce al español la palabra o expresión '{palabra_consulta}'. "
+                    f"Explica brevemente su significado y da un ejemplo de uso en inglés."
                 )
-                return {"respuesta": respuesta_final, "texto_para_guardar": None}
+                respuesta_llm = self.llm.invoke([HumanMessage(content=prompt_fallback)])
+                respuesta_final = respuesta_llm.content
 
-            # ✅ 2️⃣ Construir un contexto a partir del RAG
+                texto_para_guardar = f"{palabra_consulta}: {respuesta_final}"
+                self.ultima_palabra = palabra_consulta
+                return {"respuesta": respuesta_final, "texto_para_guardar": texto_para_guardar}
+
             contexto_rag = "\n\n".join(resultados_rag)
             prompt = (
                 f"El usuario preguntó por la palabra '{palabra_consulta}'. "
@@ -97,30 +106,25 @@ class Tutor:
                 f"Explica su significado de forma breve, tradúcela al español, y da un ejemplo de uso."
             )
 
-            # ✅ 3️⃣ Llamar al modelo con ese contexto
             respuesta_llm = self.llm.invoke([HumanMessage(content=prompt)])
-
             respuesta_final = respuesta_llm.content
             texto_para_guardar = f"{palabra_consulta}: {respuesta_final}"
 
+            # 🧹 Limpieza de contexto del RAG tras responder
+            self.ultima_palabra = palabra_consulta  # se conserva para registro inmediato
             return {"respuesta": respuesta_final, "texto_para_guardar": texto_para_guardar}
 
-        # --- 3️⃣ Si el usuario pide registrar algo ---
+        # --- 3️⃣ Registro en Notion ---
         if any(keyword in pregunta.lower() for keyword in keywords_registrar):
             contexto = (
-                f"La última palabra explicada fue '{self.ultima_palabra}'."
-                if hasattr(self, "ultima_palabra")
-                else "No hay palabra previa registrada."
+                f"La última palabra explicada fue '{self.ultima_palabra}'." 
+                if self.ultima_palabra else "No hay palabra previa registrada."
             )
 
-            # Obtenemos también el último mensaje del tutor para contexto
             ultimo_significado = ""
             if len(self.historial_mensajes) >= 2:
                 ultimo_significado = self.historial_mensajes[-2].content
 
-            print(f"DEBUG última palabra guardada: {getattr(self, 'ultima_palabra', None)}")
-
-            # --- 4️⃣ Prompt reforzado para extracción JSON ---
             prompt_extraccion = [
                 SystemMessage(
                     content=(
@@ -130,34 +134,24 @@ class Tutor:
                         "sin texto adicional.\n\n"
                         "El JSON debe contener las siguientes claves:\n"
                         "{'palabra', 'traduccion', 'ejemplo', 'idioma', 'fecha'}.\n\n"
-                        "Ejemplo válido:\n"
-                        "{'palabra': 'moon', 'traduccion': 'luna', "
-                        "'ejemplo': 'The moon is bright tonight.', 'idioma': 'inglés', 'fecha': '2025-10-18'}\n\n"
                         "⚠️ Si NO puedes determinar con claridad qué palabra o frase se debe registrar, "
                         "NO inventes nada. En su lugar, responde exactamente con este mensaje:\n"
                         '"Necesito que me confirmes qué palabra o frase quieres registrar antes de guardar en Notion."'
                     )
                 ),
                 HumanMessage(
-                    content=(
-                        f"Usuario dijo: {pregunta}\n"
-                        f"Contexto: {contexto}\n"
-                        f"Última explicación del tutor: {ultimo_significado}\n"
-                    )
+                    content=(f"Usuario dijo: {pregunta}\nContexto: {contexto}\nÚltima explicación del tutor: {ultimo_significado}\n")
                 ),
             ]
 
-            # --- 5️⃣ Llamamos al modelo para generar el JSON ---
             resultado = self.llm.invoke(prompt_extraccion)
 
-            # --- 6️⃣ Intentamos parsear el JSON ---
             try:
                 contenido = resultado.content if hasattr(resultado, "content") else str(resultado)
                 print("\nDEBUG respuesta cruda del modelo:\n", contenido)
-
-                contenido_limpio = re.sub(r"```json|```", "", contenido).strip()
-                datos = json.loads(contenido_limpio.replace("'", '"'))
-                print("DEBUG JSON decodificado correctamente:", datos)
+                contenido_limpio = re.sub(r"```json|```", "", contenido, flags=re.DOTALL).strip()
+                datos = json.loads(contenido_limpio)
+                print("✅ DEBUG JSON decodificado correctamente:", datos)
             except Exception as e:
                 print("⚠️ No se pudo convertir la respuesta a JSON.")
                 print("🧾 Respuesta recibida del modelo:", resultado)
@@ -165,23 +159,17 @@ class Tutor:
                 datos = None
 
             texto_para_guardar = datos
+           # 💾 Confirmación directa de registro sin invocar nuevamente al modelo
+            if datos:
+                respuesta_final = f"✅ La palabra **{datos.get('palabra', '')}** fue registrada correctamente en Notion."
+            else:
+                respuesta_final = "⚠️ No se pudo registrar la palabra. Verifica que se haya reconocido correctamente."
 
-            # --- 7️⃣ Continuación normal de la conversación ---
-            prompt_conversacion = self.historial_mensajes
-            resultado_conversacion = self.llm.invoke(prompt_conversacion)
-            respuesta_texto = (
-                resultado_conversacion.content.strip()
-                if hasattr(resultado_conversacion, "content")
-                else str(resultado_conversacion).strip()
-            )
-
-            self.historial_mensajes.append(AIMessage(content=respuesta_texto))
-            respuesta_final = respuesta_texto
-
-            # --- 8️⃣ Retornamos resultado y datos para registrar ---
+            # 🧹 Limpieza tras registrar en Notion
+            self.ultima_palabra = None
             return {"respuesta": respuesta_final, "texto_para_guardar": texto_para_guardar}
 
-        # --- 9️⃣ Si no es un caso especial, conversación normal ---
+        # --- 9️⃣ Conversación normal ---
         resultado_generico = self.llm.invoke(self.historial_mensajes)
         respuesta_final = (
             resultado_generico.content.strip()

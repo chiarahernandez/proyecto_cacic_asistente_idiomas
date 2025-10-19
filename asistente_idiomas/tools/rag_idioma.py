@@ -1,5 +1,8 @@
 # asistente_idiomas/tools/rag_idioma.py
 import os
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import json
 import hashlib
 import shutil
@@ -158,7 +161,7 @@ def buscar_vocabulario(palabra: str):
     if vectorstore is None:
         raise ValueError("Vectorstore no inicializado. Ejecuta inicializar_rag() primero.")
 
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
     # warning: get_relevant_documents puede estar deprecado en tu versión; lo usamos por compatibilidad
     try:
         results = retriever.get_relevant_documents(palabra)
@@ -171,7 +174,7 @@ def buscar_vocabulario(palabra: str):
         meta = getattr(doc, "metadata", {}) or {}
         source = meta.get("source", "sin fuente")
         preview = getattr(doc, "page_content", str(doc))[:200]
-        print(f"  - Resultado {i}: fuente={source} preview={preview!r}")
+        
     return [f"[{getattr(doc, 'metadata', {}).get('source', 'sin fuente')}] {getattr(doc, 'page_content', str(doc))}" for doc in results]
 
 def off_topic_tool():

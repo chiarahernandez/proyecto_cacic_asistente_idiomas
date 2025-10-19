@@ -1,4 +1,5 @@
 from asistente_idiomas.tools.notion_tool import guardar_en_notion
+from datetime import datetime
 
 class Registrador:
     """Agente responsable de registrar en Notion los aprendizajes o resultados."""
@@ -13,7 +14,9 @@ class Registrador:
             traduccion = datos.get("traduccion", "")
             ejemplo = datos.get("ejemplo", "")
             idioma = datos.get("idioma", "")
-            fecha = datos.get("fecha", "")
+            
+            #  Sobrescribimos siempre con la fecha actual
+            fecha = datetime.now().date().isoformat()
 
             resultado = guardar_en_notion(palabra, traduccion, ejemplo, idioma, fecha)
             return f"✅ Registro guardado en Notion correctamente: {resultado}"
