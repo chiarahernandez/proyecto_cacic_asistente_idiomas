@@ -1,0 +1,29 @@
+# Vocabulario Fantasía - Solo conocido por el RAG del Asistente de Idiomas
+
+## 1. Palabras inventadas
+
+- florblin → verbo. Expresar confusión de forma divertida o exagerada.
+  Ejemplo: “When she didn’t understand the question, she just florblined and laughed.”
+  (Cuando no entendió la pregunta, simplemente “florbleó” y se rió.)
+
+- glimpa → sustantivo. Una pequeña idea o inspiración repentina.
+  Ejemplo: “I had a glimpa for a new song while walking.”
+  (Tuve una *glimpa* para una nueva canción mientras caminaba.)
+
+- zorplin → adjetivo. Que combina colores o estilos de manera caótica pero encantadora.
+  Ejemplo: “Your outfit is so zorplin today!”
+  (¡Tu atuendo está tan *zorplin* hoy!)
+
+- trevlo → sustantivo. Un recuerdo muy feliz del pasado que te hace sonreír.
+  Ejemplo: “That song is a trevlo from my childhood.”
+  (Esa canción es un *trevlo* de mi infancia.)
+
+- mirg → verbo. Concentrarse intensamente en algo por un corto tiempo.
+  Ejemplo: “She mirged on the problem until she found the solution.”
+  (Ella se *mirgó* en el problema hasta que encontró la solución.)
+
+## 2. Expresiones comunes con estas palabras
+
+- “Don’t florblin, stay calm.” → No te *florblees*, mantené la calma.
+- “I had a glimpa and started writing.” → Tuve una *glimpa* y comencé a escribir.
+- “Her painting is very zorplin.” → Su pintura es muy *zorplin*.
