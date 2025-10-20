@@ -169,7 +169,7 @@ def buscar_vocabulario(palabra: str):
         # fallback a invoke si la versión nueva lo exige
         results = retriever.invoke({"input": palabra}).get("output", [])
 
-    print(f"🔍 Búsqueda realizada: '{palabra}' → {len(results)} resultados relevantes.")
+   # print(f"🔍 Búsqueda realizada: '{palabra}' → {len(results)} resultados relevantes.")
     for i, doc in enumerate(results):
         meta = getattr(doc, "metadata", {}) or {}
         source = meta.get("source", "sin fuente")

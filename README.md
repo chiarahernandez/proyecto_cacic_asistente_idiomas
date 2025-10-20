@@ -1,4 +1,53 @@
 # Asistente de Idiomas — Luna
+##  Instalación y configuración
+
+##  Clonar el repositorio
+
+```bash
+git clone https://github.com/chiarahernandez/proyecto_cacic_asistente_idiomas 
+```
+
+## Crear y activar entorno virtual:
+python -m venv .venv
+
+- Windows:
+
+.venv\Scripts\Activate.ps1
+
+
+- Mac / Linux:
+
+source .venv/bin/activate
+
+## Instalar dependencias:
+pip install -r requirements.txt
+
+
+## Configurar claves de API
+
+Crear un archivo .env en la raíz del proyecto con las siguientes líneas:
+
+- Clave API de Google Gemini
+GOOGLE_API_KEY=tu_clave_gemini_aquí
+
+- Token de Notion
+NOTION_API_KEY=tu_clave_notion_aquí
+
+- ID de la base de Notion donde se guardarán notas/vocabulario
+NOTION_DATABASE_ID=tu_database_id_aquí
+
+- API key de LangSmith (para trazabilidad y evaluación)
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_API_KEY=tu_clave_langsmith_aquí
+LANGCHAIN_PROJECT="Luna-Asistente-Idiomas"
+
+
+## Ejecución
+
+Ejecutar el asistente desde la raíz del proyecto:
+
+python -m asistente_idiomas.main
+
 
 **Luna** es un asistente virtual inteligente diseñado para ayudar a los usuarios a aprender, practicar y consultar vocabulario en distintos idiomas.  
 - Combina técnicas avanzadas de Inteligencia Artificial conversacional, RAG (Retrieval-Augmented Generation) y el modelo Gemini (Google Generative AI), integradas mediante LangChain y LangGraph, para ofrecer una experiencia educativa natural, contextual y personalizada.
@@ -52,75 +101,4 @@ Respuesta → Nodo "Luna"
                             LangSmith (Tracing)
                   (Registro y evaluación de conversaciones)
 
-
-## Estructura del Proyecto
-proyecto_cacic_asistente_idiomas-main/
-│
-├── asistente_idiomas/
-│   ├── main.py                # Punto de entrada del proyecto
-│   ├── graph_luna.py          # Implementación del agente y flujo LangGraph
-│   ├── tools/
-│   │   ├── rag_tool.py        # Herramienta RAG para búsqueda contextual
-│   │   └── notion_tool.py     # Integración con Notion (guardar y recuperar notas)
-│   ├── agentes/
-│   │   └── tutor.py         # Clase Tutor: lógica principal del asistente
-    │       └── registrador.py 
-    ├── knowledge/            # Documentos base para embeddings (txt, md, etc.)
-│          ├── vocabulario.txt        # Herramienta RAG para búsqueda contextual
-│   │      └── gramatica.txt 
-    
-│
-├── .env                       # Variables de entorno (claves API)
-├── requirements.txt            # Dependencias del entorno virtual
-└── README.md                   # Documentación del proyecto
-
-##  Instalación y configuración
-
-##  Clonar el repositorio
-
-```bash
-git clone https://github.com/chiarahernandez/proyecto_cacic_asistente_idiomas 
-```
-
-## Crear y activar entorno virtual:
-python -m venv .venv
-
-- Windows:
-
-.venv\Scripts\Activate.ps1
-
-
-- Mac / Linux:
-
-source .venv/bin/activate
-
-## Instalar dependencias:
-pip install -r requirements.txt
-
-
-## Configurar claves de API
-
-Crear un archivo .env en la raíz del proyecto con las siguientes líneas:
-
-- Clave API de Google Gemini
-GOOGLE_API_KEY=tu_clave_gemini_aquí
-
-- Token de Notion
-NOTION_API_KEY=tu_clave_notion_aquí
-
-- ID de la base de Notion donde se guardarán notas/vocabulario
-NOTION_DATABASE_ID=tu_database_id_aquí
-
-- API key de LangSmith (para trazabilidad y evaluación)
-LANGCHAIN_TRACING_V2=true
-LANGCHAIN_API_KEY=tu_clave_langsmith_aquí
-LANGCHAIN_PROJECT="Luna-Asistente-Idiomas"
-
-
-
-## Ejecución
-
-Ejecutar el asistente desde la raíz del proyecto:
-
-python -m asistente_idiomas.main
 
